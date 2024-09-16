@@ -6,17 +6,17 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface IUsuarios {
-    id: number,
-    nome: string,
-    email: string,
+    id: number
+    nome: string
+    email: string
     permissoes: string
 }
+
 export default function Usuarios() {
 
     const navigate = useNavigate()
 
     const [usuarios, setUsuarios] = useState<Array<IUsuarios>>([])
-
 
     useEffect(() => {
         let lsToken = localStorage.getItem('americanos.token')
@@ -54,19 +54,18 @@ export default function Usuarios() {
                     <h1>Usuários</h1>
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-success"
                         onClick={() => {
-                           navigate('/usuarios/criar')
+                            navigate('/usuarios/criar')
                         }}
-                    >Adicionar
-                    </button>
+                    >Adicionar</button>
 
                 </div>
 
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
                             <th scope="col">Ações</th>
@@ -84,7 +83,7 @@ export default function Usuarios() {
                                         <td>{usuario.email}</td>
                                         <td>
                                             <button
-                                                className="btn btn-success"
+                                                className="btn btn-warning"
                                                 type="button"
                                                 style={{
                                                     marginRight: 5
@@ -106,6 +105,7 @@ export default function Usuarios() {
                         }
 
                     </tbody>
+
                 </table>
 
             </LayoutDashboard>

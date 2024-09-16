@@ -29,11 +29,11 @@ export const Rotas = () => {
                     path='/usuarios'
                     element={<Usuarios />}
                 />
+
                 <Route
                     path='/usuarios/:id'
                     element={<GerenciarUsuarios />}
-                    />
-
+                />
 
                 <Route
                     path='/produto/:id'
