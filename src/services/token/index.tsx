@@ -6,7 +6,7 @@ export const verificaTokenExpirado = (
     if (token) {
         let decodedToken = jwtDecode(token)
 
-        if (!decodedToken.exp || 
+        if (!decodedToken.exp ||
             decodedToken.exp < new Date().getTime() / 1000
         ) {
             //token expirado
@@ -15,4 +15,20 @@ export const verificaTokenExpirado = (
         //token ta ok
         return false
     }
+}
+
+
+export const validaPermissao = (
+    permissao: Array<string>,
+    permissaoToken?: string
+) => {
+    if (permissaoToken) {
+
+        if (typeof permissaoToken === 'string') {
+            const temAlgumaPermissao = permissao.includes(permissaoToken)
+            return temAlgumaPermissao
+        }
+        return false
+    }
+    return false
 }

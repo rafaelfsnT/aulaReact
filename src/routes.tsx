@@ -14,10 +14,9 @@ export const Rotas = () => {
     return (
         <BrowserRouter>
             <Routes>
-                {/* www.google.com.br/profchines */}
                 <Route
-                    path='/'
-                    element={<Login />}
+                    path='/' //rota da URL
+                    element={<Login />} //elemento a ser renderizado
                 />
 
                 <Route
