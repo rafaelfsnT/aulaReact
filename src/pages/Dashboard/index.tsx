@@ -30,7 +30,7 @@ export default function Dashboard() {
     return (
         <>
             <LayoutDashboard>
-                <h1>Novu</h1>
+                <h1>Dashboard</h1>
             </LayoutDashboard>
         </>
     )

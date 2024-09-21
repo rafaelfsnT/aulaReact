@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LayoutDashboard } from "../../components/LayoutDashboard";
 import { IToken } from "../../interfaces/token";
-import { verificaTokenExpirado } from "../../services/token";
+import { validaPermissao, verificaTokenExpirado } from "../../services/token";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -31,6 +31,13 @@ export default function Usuarios() {
             navigate('/')
         }
 
+        if(!validaPermissao(['admin', 'usuario'],
+            token?.user.permissoes
+        )) {
+            navigate('/dashboard')
+        }
+        
+
 
         //trazer os usuarios do backend
         axios.get('http://localhost:3001/users')
@@ -54,7 +61,7 @@ export default function Usuarios() {
                     <h1>Usuários</h1>
                     <button
                         type="button"
-                        className="btn btn-success"
+                        className="btn btn-primary"
                         onClick={() => {
                             navigate('/usuarios/criar')
                         }}
@@ -65,9 +72,10 @@ export default function Usuarios() {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Permissões</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -81,12 +89,16 @@ export default function Usuarios() {
                                         </th>
                                         <td>{usuario.nome}</td>
                                         <td>{usuario.email}</td>
+                                        <td>{usuario.permissoes}</td>
                                         <td>
                                             <button
-                                                className="btn btn-warning"
+                                                className="btn btn-success"
                                                 type="button"
                                                 style={{
                                                     marginRight: 5
+                                                }}
+                                                onClick={() => {
+                                                    navigate(`/usuarios/${usuario.id}`)
                                                 }}
                                             >
                                                 Editar

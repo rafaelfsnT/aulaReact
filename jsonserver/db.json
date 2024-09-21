@@ -8,17 +8,17 @@
       "permissoes": "admin"
     },
     {
+      "nome": "Yuri ",
       "email": "alberto@gmail.com",
-      "password": "$2a$10$gukSRQE2mVFuIrX5WIBmX.gT/VjCsY1grzzXI.uC5Y1zDBV/zKP16",
-      "nome": "Yuri Alberto",
-      "permissoes": "admin",
+      "permissoes": "colaborador",
+      "password": "$2a$10$vBYGVFS4A4kC6hFCbgI1MujtZ1ZIRdq8opHc6L.c0YyhzMHhFfX22",
       "id": 2
     },
     {
-      "email": "rafael@gmail.com",
-      "password": "$2a$10$DqQ2e/AyOSlczT5SyYsn9.dCb7fpKsKR/XPbeAJFLIJvSoIYNBWna",
       "nome": "Rafael",
-      "permissoes": "admin",
+      "email": "rafa@gmail.com",
+      "permissoes": "colaborador",
+      "password": "$2a$10$f21.raHBOX0za3OH3hudUOPX49e9hRxkjn0BdnoQoTNKLz5PQ9OJ.",
       "id": 3
     },
     {
@@ -27,6 +27,20 @@
       "nome": "Teste",
       "permissoes": "admin",
       "id": 4
+    },
+    {
+      "email": "lamine@gmail.com",
+      "password": "$2a$10$BEde//uygzG3VJQJmvdqnuaX3RGPcanPg4KUeq2hqo0Upp.tKqNne",
+      "nome": "Lamine",
+      "permissoes": "admin",
+      "id": 5
+    },
+    {
+      "email": "yuri@gmail.com",
+      "password": "$2a$10$9NP9/U0q/PFonfpBKoUKRemJ551DmnDsx6jB9PzQgwPMT3dmPNk1q",
+      "nome": "Yuri",
+      "permissoes": "admin",
+      "id": 6
     }
   ]
 }

@@ -1,5 +1,7 @@
-import { ReactNode } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
+import { IToken } from "../../interfaces/token"
+import { validaPermissao } from "../../services/token"
 
 interface IProps {
     children: ReactNode
@@ -7,13 +9,28 @@ interface IProps {
 
 export const LayoutDashboard = (props: IProps) => {
 
+    const [token, setToken] = useState<IToken>()
+
+    useEffect(() => {
+        let lsToken = localStorage.getItem('americanos.token')
+
+        let token: IToken | undefined
+
+        if (typeof lsToken === 'string') {
+            token = JSON.parse(lsToken)
+            setToken(token)
+        }
+
+    })
+
+
     return (
         <>
             <header
                 className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0"
             >
                 <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3"
-                    href="#">
+                    href="/dashboard">
                     Sistema Autenticação
                 </a>
                 <button
@@ -60,12 +77,25 @@ export const LayoutDashboard = (props: IProps) => {
                                         Dashboard
                                     </Link>
                                 </li>
+                                {
+                                    validaPermissao(['admin', 'usuario'],
+                                        token?.user.permissoes
+                                    ) &&
+                                    <li className="nav-item">
+                                        <Link
+                                            className={`nav-link`}
+                                            to={'/usuarios'}
+                                        >
+                                            Usuários
+                                        </Link>
+                                    </li>
+                                }
                                 <li className="nav-item">
                                     <Link
                                         className={`nav-link`}
-                                        to={'/usuarios'}
+                                        to={'/dashboard'}
                                     >
-                                        Usuários
+                                        Voluntarios
                                     </Link>
                                 </li>
                             </ul>
